@@ -17,7 +17,7 @@ class Calibration(Node) :
     def __init__(self, calibration_file):
         super().__init__('calibration_publisher')
         latching_qos = QoSProfile(depth=1,
-            durability=QoSDurabilityPolicy.RMW_QOS_POLICY_DURABILITY_TRANSIENT_LOCAL)
+            durability=QoSDurabilityPolicy.TRANSIENT_LOCAL)
         self.camera_info_pub = self.create_publisher(CameraInfo, 'camera_info_0', latching_qos)
         self.camera_info_pub_2 = self.create_publisher(CameraInfo, 'camera_info_1', latching_qos)
         self.tf_pub = self.create_publisher(TFMessage, 'tf_static', latching_qos)
