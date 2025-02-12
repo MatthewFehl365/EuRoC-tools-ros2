@@ -42,20 +42,24 @@ class Calibration(Node) :
             self.camera_info.width = self.calibration['camera_0']['resolution'][0]
             self.camera_info.distortion_model = self.calibration['camera_0']['distortion_model']
             self.camera_info.d = self.calibration['camera_0']['distortion_coefficients']
-            K_1 = np.array([self.calibration['camera_0']['intrinsics'][0], 0, self.calibration['camera_0']['intrinsics'][2],
-                           0, self.calibration['camera_0']['intrinsics'][1], self.calibration['camera_0']['intrinsics'][3],
-                           0, 0, 1])
-            self.camera_info.k = K_1 # is this right?
+            self.camera_info.k = np.array([self.calibration['camera_0']['intrinsics'][0], 0, self.calibration['camera_0']['intrinsics'][2],
+                            0, self.calibration['camera_0']['intrinsics'][1], self.calibration['camera_0']['intrinsics'][3],
+                            0, 0, 1])# is this right?
+            self.camera_info.p = np.array([self.calibration['camera_0']['intrinsics'][0], 0, self.calibration['camera_0']['intrinsics'][2], 0,
+                            0, self.calibration['camera_0']['intrinsics'][1], self.calibration['camera_0']['intrinsics'][3], 0,
+                            0, 0, 1, 0])# is this right?
             
             self.camera_info_2.header.frame_id = 'cam1'
             self.camera_info_2.height = self.calibration['camera_1']['resolution'][1]
             self.camera_info_2.width = self.calibration['camera_1']['resolution'][0]
             self.camera_info_2.distortion_model = self.calibration['camera_1']['distortion_model']
             self.camera_info_2.d = self.calibration['camera_1']['distortion_coefficients']
-            K_2 = np.array([self.calibration['camera_1']['intrinsics'][0], 0, self.calibration['camera_1']['intrinsics'][2],
-                           0, self.calibration['camera_1']['intrinsics'][1], self.calibration['camera_1']['intrinsics'][3],
-                           0, 0, 1])
-            self.camera_info_2.k = K_2 # is this right?
+            self.camera_info_2.k = np.array([self.calibration['camera_1']['intrinsics'][0], 0, self.calibration['camera_1']['intrinsics'][2],
+                            0, self.calibration['camera_1']['intrinsics'][1], self.calibration['camera_1']['intrinsics'][3],
+                            0, 0, 1]) # is this right?
+            self.camera_info_2.p = np.array([self.calibration['camera_1']['intrinsics'][0], 0, self.calibration['camera_1']['intrinsics'][2], 0,
+                            0, self.calibration['camera_1']['intrinsics'][1], self.calibration['camera_1']['intrinsics'][3], 0,
+                            0, 0, 1, 0]) # is this right?
             
             # fill in the tf_message
             self.tf_message.transforms = []
