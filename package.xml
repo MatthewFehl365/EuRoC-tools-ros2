@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="2">
+    <name>euroc_tools_ros_2</name>
+    <version>0.9.4</version>
+    <description>EuRoC tools for ROS2</description>
+
+    <maintainer email="matthew_fehl@live.com">Matthew Fehl</maintainer>
+    <license>Apache License 2.0</license>
+
+    <depend>rclpy</depend>
+    <depend>tf2_msgs</depend>
+    <depend>sensor_msgs</depend>
+    <depend>geometry_msgs</depend>
+
+    <export>
+        <build_type>ament_python</build_type>
+    </export>
+</package>
